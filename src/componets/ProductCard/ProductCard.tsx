@@ -7,9 +7,21 @@ export default function ProductCard({
   images,
   sku,
   stock,
-}: any) {
+  id,
+}: {
+  id: string
+  name: string
+  price: number
+  description: string
+  images: { url: string }
+  sku: string
+  stock: number
+}) {
   return (
-    <div className='group relative bg-white rounded-lg shadow-sm overflow-hidden product-card'>
+    <div
+      className='group relative bg-white rounded-lg shadow-sm overflow-hidden product-card'
+      id={id}
+    >
       <div className='w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-t-lg overflow-hidden group-hover:opacity-75 relative'>
         <Image
           fill

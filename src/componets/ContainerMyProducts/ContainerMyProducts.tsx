@@ -2,6 +2,15 @@ import { API_URL } from '@/utils/apiUrl'
 import Link from 'next/link'
 import { cookies } from 'next/headers'
 import ProductCard from '../ProductCard'
+interface Product {
+  id: string
+  name: string
+  images: { url: string }[]
+  price: number
+  description: string
+  sku: string
+  stock: number
+}
 
 export default async function ContainerMyProducts() {
   const cookieStore = await cookies()
@@ -41,7 +50,7 @@ export default async function ContainerMyProducts() {
         </div>
 
         <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
-          {products.map((product: any) => (
+          {products.map((product: Product) => (
             <ProductCard
               key={product.id}
               id={product.id}

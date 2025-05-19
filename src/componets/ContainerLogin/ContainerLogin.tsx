@@ -33,6 +33,8 @@ export default function ContainerLogin({
 
         // Guardar token en localStorage o cookie
         setCookies(data)
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('roles', data.roles)
 
         setIsModalOpen(false)
       }

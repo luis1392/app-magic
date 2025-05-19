@@ -3,6 +3,16 @@ import React from 'react'
 import ProductCard from '../ProductCard'
 import { API_URL } from '@/utils/apiUrl'
 
+interface Product {
+  id: string
+  name: string
+  images: { url: string }[]
+  price: number
+  description: string
+  sku: string
+  stock: number
+}
+
 export default async function ContainerProducts() {
   const data = await fetch(`${API_URL}/products`)
   const products = await data.json()
@@ -26,7 +36,7 @@ export default async function ContainerProducts() {
 
         <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
           {/* <!-- Product 1 --> */}
-          {products.map((product: any) => (
+          {products.map((product: Product) => (
             <ProductCard
               key={product.id}
               id={product.id}

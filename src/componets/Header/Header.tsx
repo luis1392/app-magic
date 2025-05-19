@@ -7,6 +7,8 @@ import ContainerLogin from '../ContainerLogin'
 
 import isLogIn from '@/utils/IsLogin'
 import isAdmin from '@/utils/isAdmin'
+import { CloseSession } from '@/utils/closeSession'
+
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
@@ -101,18 +103,20 @@ export default function Header() {
                   0
                 </span>
               </Link>
-              <button
-                className='ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-[#2b9579] hover:bg-[#0e93cd]'
-                id='login-button'
-                onClick={() => setIsModalOpen(true)}
-              >
-                Ingresar
-              </button>
+              {!isLogIn() && (
+                <button
+                  className='ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-[#2b9579] hover:bg-[#0e93cd]'
+                  id='login-button'
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Ingresar
+                </button>
+              )}
               {isLogIn() && (
                 <button
                   className='ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-red-600 hover:bg-red-700'
                   id='login-button'
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => CloseSession()}
                 >
                   Cerrar sesion
                 </button>
